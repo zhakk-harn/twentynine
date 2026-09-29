@@ -21,28 +21,30 @@
         displayWidth="1280" displayHeight="720">
 
         <a-marker type='barcode' value='0'>
-            <a-text value="Hello !"
-                    side="double"
-                    position="0 0 -1"
-                    rotation="270 0 0"
-                    width="8"
-                    color="#1161d9"
-                    align="center"
-            >
-            </a-text>
-            <a-text value="ca va !"
-                    side="double"
-                    position="0 0 1"
-                    rotation="270 0 0"
-                    width="8"
-                    color="red"
-                    align="center"
-            >
-            </a-text>
+          <a-image src="assets/trees.jpg" width="2.096" position="0 0 2" height="1.341" rotation="270 0 0"></a-image>
+          <a-gltf-model id="plant" src="assets/plant_modelling.glb" scale="0.2 0.2 0.2"></a-gltf-model>
+          <a-image src="assets/logo_ecole_1_coul_defonce_noir.png" width="2.096" position="0 0 -2" height="1.341" rotation="270 0 0"></a-image>
         </a-marker>
 
         <a-entity camera></a-entity>
 
     </a-scene>
+
+    <script>
+      let rot = [0,0,0];
+
+      const plant = document.querySelector("#plant");
+
+      anim();
+
+      function anim(){
+        requestAnimationFrame(anim);
+        rot[1] += 1;
+        plant.setAttribute("rotation",`${rot[0]} ${rot[1]} ${rot[2]}`);
+
+        console.log(rot);
+        
+      }
+    </script>
 </body>
 </html>
